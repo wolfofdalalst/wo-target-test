@@ -1,0 +1,29 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: t-ayusgupta-st
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: oci://ghcr.io/stefanprodan/charts/podinfo
+    chart: podinfo
+    targetRevision: 6.9.3
+    helm:
+      releaseName: e9c5d5e607ca8b8660632cba6dd43ad6f3544576
+      values: |
+          AppName: PriceDetector
+          TemperatureRangeMax: 85
+          ErrorThreshold: 5
+          HealthCheckEndpoint: "https://health.example.com"
+          EnableLocalLog: true
+          AgentEndpoint: "https://agent.example.com"
+          HealthCheckEnabled: true
+          ApplicationEndpoint: "https://app.example.com"
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: new
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
