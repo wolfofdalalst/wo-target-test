@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: shampoo-volume
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: wodemo.azurecr.io/helm/shampoo-volume
+    chart: shampoo-volume
+    targetRevision: 1.0.0
+    helm:
+      releaseName: f29e22b3fd48f272a81d4280620262b17fd3e0c9
+      values: |
+          Volume: 250
+          Unit: ml
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: monday-line-1
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
