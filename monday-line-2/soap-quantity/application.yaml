@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: soap-quantity
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: wodemo.azurecr.io/helm/soap-quantity
+    chart: soap-quantity
+    targetRevision: 1.0.0
+    helm:
+      releaseName: 6f8d59d019f443d07eff438ffbbbd1e62dbb8aa7
+      values: |
+          Quantity: 500
+          Unit: ml
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: monday-line-2
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
