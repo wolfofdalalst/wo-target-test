@@ -1,0 +1,22 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: stf729a4c4e5df
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: bvtacr.azurecr.io/helm/simple-chart
+    chart: simple-chart
+    targetRevision: 0.4.0
+    helm:
+      releaseName: c0e4304c7703f9000f4c23362c623626e2231bd9
+      values: |
+          StringVal: gitf729a4c4e5de
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: test
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
