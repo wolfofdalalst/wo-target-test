@@ -8,11 +8,11 @@ spec:
   source:
     repoURL: wodemo.azurecr.io/helm/soap-quantity
     chart: soap-quantity
-    targetRevision: 1.2.0
+    targetRevision: 1.3.0
     helm:
       releaseName: 72f7bd5d3566300d3de2a7c2df79b8799dc77882
       values: |
-          Quantity: 900
+          Quantity: 1100
           Unit: ml
   destination:
     server: https://kubernetes.default.svc
