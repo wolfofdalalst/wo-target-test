@@ -1,0 +1,25 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: soap-line-2
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: wodemo.azurecr.io/helm/soap-quantity
+    chart: soap-quantity
+    targetRevision: 1.0.0
+    helm:
+      releaseName: f742233d6468ffa4641168d5bc2f3e79a05e697f
+      values: |
+          Quantity: 2
+          Unit: batch
+          Line: line-2
+          Flavor: citrus
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: line-2-prod
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
