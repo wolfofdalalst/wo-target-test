@@ -8,14 +8,14 @@ spec:
   source:
     repoURL: wodemo.azurecr.io/helm/soap-quantity
     chart: soap-quantity
-    targetRevision: 1.0.0
+    targetRevision: 1.1.0
     helm:
       releaseName: bd9d46a2e19ef1da643688c5e61024f66f33c153
       values: |
-          Quantity: 1
+          Quantity: 10
           Unit: batch
           Line: line-1
-          Flavor: lavender
+          Flavor: lavender-v2
   destination:
     server: https://kubernetes.default.svc
     namespace: line-1-prod
