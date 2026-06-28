@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: t-ayusgupta-gitprc
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: oci://ghcr.io/stefanprodan/charts
+    chart: podinfo
+    targetRevision: 6.9.3
+    helm:
+      releaseName: e56b1630575fd3a9deffc3fddcfdac4313d07a7a
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: new
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
