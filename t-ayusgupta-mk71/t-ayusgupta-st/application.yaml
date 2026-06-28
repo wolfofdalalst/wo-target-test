@@ -6,7 +6,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: oci://ghcr.io/stefanprodan/charts/podinfo
+    repoURL: oci://ghcr.io/stefanprodan/charts
     chart: podinfo
     targetRevision: 6.9.3
     helm:
@@ -15,11 +15,11 @@ spec:
           AppName: PriceDetector
           TemperatureRangeMax: 85
           ErrorThreshold: 5
-          HealthCheckEndpoint: "https://health.example.com"
+          HealthCheckEndpoint: https://health.example.com
           EnableLocalLog: true
-          AgentEndpoint: "https://agent.example.com"
+          AgentEndpoint: https://agent.example.com
           HealthCheckEnabled: true
-          ApplicationEndpoint: "https://app.example.com"
+          ApplicationEndpoint: https://app.example.com
   destination:
     server: https://kubernetes.default.svc
     namespace: new
